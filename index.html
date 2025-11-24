@@ -112,12 +112,24 @@
 <p>根据提示，去<a target="_blank" rel="noopener" href="https://localhost4000/">https://localhost4000/</a> 上预览自己写的md文件格式</p>
 <p>若输入指令后，git bash出现大量黄色提示，这是在指出你的语法错误，需要根据提示修改md文件中的文本格式</p>
 <h2 id="第五步：投放到hexo上"><a href="#第五步：投放到hexo上" class="headerlink" title="第五步：投放到hexo上"></a>第五步：投放到hexo上</h2><p><code>hexo generate</code> 或<code>hexo g</code> ——生成静态文件（存放在文件夹public中）</p>
-<p><code>hexo deplay</code>或 <code>hexo d </code>     ——放置在deplay配置的仓库中（如：github）</p>
+<p><code>hexo deplay</code>或 <code>hexo d </code>     ——放置在deplay配置的线上仓库中（如：github）</p>
+<p>若出现：INFO  Deplay down git则成功</p>
+<p>之后到网站 <a target="_blank" rel="noopener" href="https://user.github.io/">https://user.github.io</a> 上便可以查看blog</p>
+<p>（例如： <a target="_blank" rel="noopener" href="https://cnkrru.github.io/">https://cnkrru.github.io</a>  )</p>
+<p>若未看到新的blog，则等待几分钟，刷新一下，部署过程可能慢了些</p>
+<h2 id="补充：更改-删除blog-报错后如何返回"><a href="#补充：更改-删除blog-报错后如何返回" class="headerlink" title="补充：更改/删除blog/报错后如何返回"></a>补充：更改/删除blog/报错后如何返回</h2><h3 id="更改："><a href="#更改：" class="headerlink" title="更改："></a>更改：</h3><p>在原来的md文件上之间修改，然后</p>
+<p><code>hexo clean &amp;&amp; hexo s</code>  ——预览一下</p>
+<p><code>hexo g &amp;&amp;hexo d</code>            ——配置</p>
+<h3 id="删除："><a href="#删除：" class="headerlink" title="删除："></a>删除：</h3><p>在_post文件夹里将想要删除的blog所属的md文件删除</p>
+<p><code>hexo clean &amp;&amp; hexo s</code>  ——预览一下</p>
+<p><code>hexo g &amp;&amp;hexo d</code>            ——配置</p>
+<h3 id="报错后如何返回："><a href="#报错后如何返回：" class="headerlink" title="报错后如何返回："></a>报错后如何返回：</h3><p>ctrl+c   ——中断当前步骤，返回至my-blog</p>
+<p>不需要重新写md什么的，根据报错检查已有md的问题即可</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/11/23/hexoblog/" data-id="cuiddbytSHjJ0EeAUxSfP8oyq" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/11/23/hexoblog/" data-id="cuidYkkFYriO2QRdfKjenLeJl" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -168,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/11/22/hello-world/" data-id="cuidaTUg-ltQD3PaEDP3pVruQ" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/11/22/hello-world/" data-id="cuidrWerpcBfkKFuGrYEnSSWL" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
