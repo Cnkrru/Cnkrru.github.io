@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Cnkrru‘s blog</title>
+  
+  
+  <link href="https://cnkrru.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://cnkrru.github.io/"/>
+  <updated>2025-11-25T11:39:22.759Z</updated>
+  <id>https://cnkrru.github.io/</id>
+  
+  <author>
+    <name>Cnkrru</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://cnkrru.github.io/2025/11/23/hexoblog/"/>
+    <id>https://cnkrru.github.io/2025/11/23/hexoblog/</id>
+    <published>2025-11-23T13:43:40.442Z</published>
+    <updated>2025-11-25T11:39:22.759Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>title: hexoblog<br>date: 2025-11-23 21:43:40<br>tags: [blog,git,hexo]<br>categories: 知识分享</p><h1 id="hexoblog的使用与书写"><a href="#hexoblog的使用与书写" class="headerlink" title="hexoblog的使用与书写"></a>hexoblog的使用与书写</h1><h2 id="第一步：指向目标文件夹"><a href="#第一步：指向目标文件夹" class="headerlink" title="第一步：指向目标文件夹"></a>第一步：指向目标文件夹</h2><p><code>cd /盘/my-blog</code>例如：<code>cd/d/Blog/my-blog</code></p><p>如果放在桌面，则不同：<code>cd~/Desktop/my-blog</code></p><h2 id="第二步：生成md文件"><a href="#第二步：生成md文件" class="headerlink" title="第二步：生成md文件"></a>第二步：生成md文件</h2><p><code>hexo new "你的文章标题"</code></p><h3 id="该阶段会出现的问题"><a href="#该阶段会出现的问题" class="headerlink" title="#该阶段会出现的问题"></a>#该阶段会出现的问题</h3><ol><li>new与“间无空格，则无效果</li><li>创建路径不对</li></ol><p>检查路径：<code>hexo config | grep "post_dir“</code></p><h2 id="第三步：使用markdown编辑器写文本（这里推荐typora）"><a href="#第三步：使用markdown编辑器写文本（这里推荐typora）" class="headerlink" title="第三步：使用markdown编辑器写文本（这里推荐typora）"></a>第三步：使用markdown编辑器写文本（这里推荐typora）</h2><ul><li><input disabled="" type="checkbox"> 在my-blog/source/_post里找到刚才创建的md文件</li><li><input disabled="" type="checkbox"> 右键，选择打开方式，在typora文件夹里选择typora.exe</li><li><input disabled="" type="checkbox"> 打开md文件，开始写blog</li></ul><p>注意：</p><ul><li><p>需要稍微了解下typora的使用</p></li><li><p>tepora简化了md文件的书写步骤，不会markdown也可</p><p>书写blog</p></li></ul><h2 id="第四步：预览"><a href="#第四步：预览" class="headerlink" title="第四步：预览"></a>第四步：预览</h2><p><code>hexo clean</code>                               ——清理缓存</p><p><code>hexo serve</code>或者<code>hexo s</code>        ——预览</p><p>ctrl+c (快捷键)                              ——停止hexo s（预览结束后的步骤）</p><p>根据提示，去<a href="https://localhost4000/">https://localhost4000/</a> 上预览自己写的md文件格式</p><p>若输入指令后，git bash出现大量黄色提示，这是在指出你的语法错误，需要根据提示修改md文件中的文本格式</p><h2 id="第五步：投放到hexo上"><a href="#第五步：投放到hexo上" class="headerlink" title="第五步：投放到hexo上"></a>第五步：投放到hexo上</h2><p><code>hexo generate</code> 或<code>hexo g</code> ——生成静态文件（存放在文件夹public中）</p><p><code>hexo deplay</code>或 <code>hexo d </code>     ——放置在deplay配置的线上仓库中（如：github）</p><p>若出现：INFO  Deplay down git则成功</p><p>之后到网站 <a href="https://user.github.io/">https://user.github.io</a> 上便可以查看blog</p><p>（例如： <a href="https://cnkrru.github.io/">https://cnkrru.github.io</a>  )</p><p>若未看到新的blog，则等待几分钟，刷新一下，部署过程可能慢了些</p><h2 id="补充：更改-删除blog-报错后如何返回"><a href="#补充：更改-删除blog-报错后如何返回" class="headerlink" title="补充：更改/删除blog/报错后如何返回"></a>补充：更改/删除blog/报错后如何返回</h2><h3 id="更改："><a href="#更改：" class="headerlink" title="更改："></a>更改：</h3><p>在原来的md文件上之间修改，然后</p><p><code>hexo clean &amp;&amp; hexo s</code>  ——预览一下</p><p><code>hexo g &amp;&amp;hexo d</code>            ——配置</p><h3 id="删除："><a href="#删除：" class="headerlink" title="删除："></a>删除：</h3><p>在_post文件夹里将想要删除的blog所属的md文件删除</p><p><code>hexo clean &amp;&amp; hexo s</code>  ——预览一下</p><p><code>hexo g &amp;&amp;hexo d</code>            ——配置</p><h3 id="报错后如何返回："><a href="#报错后如何返回：" class="headerlink" title="报错后如何返回："></a>报错后如何返回：</h3><p>ctrl+c   ——中断当前步骤，返回至my-blog</p><p>不需要重新写md什么的，根据报错检查已有md的问题即可</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://cnkrru.github.io/2025/11/22/hello-world/"/>
+    <id>https://cnkrru.github.io/2025/11/22/hello-world/</id>
+    <published>2025-11-22T14:04:18.956Z</published>
+    <updated>2025-11-25T11:39:22.333Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></tbody></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></tbody></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></tbody></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></tbody></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
