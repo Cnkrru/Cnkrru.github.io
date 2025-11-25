@@ -6,7 +6,7 @@
   <link href="https://cnkrru.github.io/atom.xml" rel="self"/>
   
   <link href="https://cnkrru.github.io/"/>
-  <updated>2025-11-25T11:39:22.759Z</updated>
+  <updated>2025-11-25T14:17:32.806Z</updated>
   <id>https://cnkrru.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浅记搭建hexoblog的感受</title>
+    <link href="https://cnkrru.github.io/2025/11/25/%E6%B5%85%E8%AE%B0%E6%90%AD%E5%BB%BAhexoblog%E7%9A%84%E6%84%9F%E5%8F%97/"/>
+    <id>https://cnkrru.github.io/2025/11/25/%E6%B5%85%E8%AE%B0%E6%90%AD%E5%BB%BAhexoblog%E7%9A%84%E6%84%9F%E5%8F%97/</id>
+    <published>2025-11-25T13:59:01.000Z</published>
+    <updated>2025-11-25T14:17:32.806Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一篇记录感受的blog"><a href="#一篇记录感受的blog" class="headerlink" title="一篇记录感受的blog"></a>一篇记录感受的blog</h1><p>如题</p><p>搭建hexoblog，遇到很多问题：git bash、typora不会使用，markdown语法不了解，主题配置文件不会用……</p><p>但是在这个过程中，通过询问ai，一一解决，也稍微了解了网站搭建，需要HTML，CSS，JavaScript，不过这里，我直接借用了hexo框架与butterfly主题，期间也用过next主题，或许是生活太过无聊，我更换成butterfly。</p><p>另外，还创建了第一个属于自己的GitHub仓库，和第一个属于自己的网站。三天时间（并不是一天一直在弄）</p><p>大物考试还剩7天时，开始搭建（此时还有四章没开始学）</p><p>历经三天，搭建完成，目前是借用了hexo与butterfly</p><p>在寒假，学一下HTML，CSS，JavaScript吧（如果不懒的话）</p><p>哈哈，当看到blog可以被他人看到时，真的很有成就感。</p><p>暂且不说只是套用模板，会继续学习的，这个blog也是电脑学习的一部分吧，web篇的开始</p><h1 id=""><a href="#" class="headerlink" title=""></a><img src="/2025/11/25/%E6%B5%85%E8%AE%B0%E6%90%AD%E5%BB%BAhexoblog%E7%9A%84%E6%84%9F%E5%8F%97/wu.jpg" alt="这两天的吉林藏在云里"></h1><h1 id="-1"><a href="#-1" class="headerlink" title=""></a></h1><h1 id="-2"><a href="#-2" class="headerlink" title=""></a></h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    
+    <category term="记录生活" scheme="https://cnkrru.github.io/tags/%E8%AE%B0%E5%BD%95%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
   
   <entry>
     <title></title>
