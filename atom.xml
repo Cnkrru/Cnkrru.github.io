@@ -6,7 +6,7 @@
   <link href="https://cnkrru.github.io/atom.xml" rel="self"/>
   
   <link href="https://cnkrru.github.io/"/>
-  <updated>2025-11-25T14:17:32.806Z</updated>
+  <updated>2025-11-26T13:44:34.507Z</updated>
   <id>https://cnkrru.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>实验有感</title>
+    <link href="https://cnkrru.github.io/2025/11/26/%E5%AE%9E%E9%AA%8C%E6%9C%89%E6%84%9F/"/>
+    <id>https://cnkrru.github.io/2025/11/26/%E5%AE%9E%E9%AA%8C%E6%9C%89%E6%84%9F/</id>
+    <published>2025-11-26T13:38:28.000Z</published>
+    <updated>2025-11-26T13:44:34.507Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>“剪不断理还乱”的不只是离愁，还有仪器线……</p><p><img src="/2025/11/26/%E5%AE%9E%E9%AA%8C%E6%9C%89%E6%84%9F/xian.jpg" alt="图片描述"></p><p>把blog背景放这里镇一下，可能以后会改？</p><p><img src="/2025/11/26/%E5%AE%9E%E9%AA%8C%E6%9C%89%E6%84%9F/al.jpg" alt="图片描述"></p><p>艾蕾真的很漂亮</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    
+    <category term="记录生活" scheme="https://cnkrru.github.io/tags/%E8%AE%B0%E5%BD%95%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>浅记搭建hexoblog的感受</title>
