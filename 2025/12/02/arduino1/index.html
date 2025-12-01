@@ -1,0 +1,627 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>arduino1 | Cnkrru‘s blog</title><meta name="author" content="Cnkrru"><meta name="copyright" content="Cnkrru"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Arduino1 核心知识整理一、硬件基础（一）核心接口与引脚 GND：接地引脚，提供 0V 参考电位 数字输入&#x2F;输出端口：    - 支持 INPUT（输入）、OUTPUT（输出）、INPUT_PULLUP（上拉输入）三种模式。   - 注意：端口 0（RX）和 1（TX）为串口通讯专用引脚，默认用于与电脑交互，若需外接其他器件需谨慎，尽量避免占用串口端口。  模拟输入端口：专门用于读取模拟信号">
+<meta property="og:type" content="article">
+<meta property="og:title" content="arduino1">
+<meta property="og:url" content="https://cnkrru.github.io/2025/12/02/arduino1/index.html">
+<meta property="og:site_name" content="Cnkrru‘s blog">
+<meta property="og:description" content="Arduino1 核心知识整理一、硬件基础（一）核心接口与引脚 GND：接地引脚，提供 0V 参考电位 数字输入&#x2F;输出端口：    - 支持 INPUT（输入）、OUTPUT（输出）、INPUT_PULLUP（上拉输入）三种模式。   - 注意：端口 0（RX）和 1（TX）为串口通讯专用引脚，默认用于与电脑交互，若需外接其他器件需谨慎，尽量避免占用串口端口。  模拟输入端口：专门用于读取模拟信号">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cnkrru.github.io/img/tou.jpg">
+<meta property="article:published_time" content="2025-12-01T18:44:08.000Z">
+<meta property="article:modified_time" content="2025-12-01T18:46:53.308Z">
+<meta property="article:author" content="Cnkrru">
+<meta property="article:tag" content="arduino">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cnkrru.github.io/img/tou.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "arduino1",
+  "url": "https://cnkrru.github.io/2025/12/02/arduino1/",
+  "image": "https://cnkrru.github.io/img/tou.jpg",
+  "datePublished": "2025-12-01T18:44:08.000Z",
+  "dateModified": "2025-12-01T18:46:53.308Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Cnkrru",
+      "url": "https://Cnkrru.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/tou.jpg"><link rel="canonical" href="https://cnkrru.github.io/2025/12/02/arduino1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/null"/><link rel="stylesheet" href="/css/index.css?v=5.5.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.4/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'arduino1',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start -->
+    <link rel="stylesheet" href="/css/gallery.css" media="print" onload="this.media='all'">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Cnkrru‘s blog" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-image: url(/img/al.jpg);"></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/al.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Cnkrru‘s blog</span></a><a class="nav-page-title" href="/"><span class="site-name">arduino1</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div></div></nav><div id="post-info"><h1 class="post-title">arduino1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-12-01T18:44:08.000Z" title="Created 2025-12-02 02:44:08">2025-12-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-12-01T18:46:53.308Z" title="Updated 2025-12-02 02:46:53">2025-12-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>6mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="Arduino1-核心知识整理"><a href="#Arduino1-核心知识整理" class="headerlink" title="Arduino1 核心知识整理"></a>Arduino1 核心知识整理</h1><h2 id="一、硬件基础"><a href="#一、硬件基础" class="headerlink" title="一、硬件基础"></a>一、硬件基础</h2><h3 id="（一）核心接口与引脚"><a href="#（一）核心接口与引脚" class="headerlink" title="（一）核心接口与引脚"></a>（一）核心接口与引脚</h3><ol>
+<li><strong>GND</strong>：接地引脚，提供 0V 参考电位</li>
+<li><strong>数字输入/输出端口</strong>：</li>
+</ol>
+<p>  - 支持 INPUT（输入）、OUTPUT（输出）、INPUT_PULLUP（上拉输入）三种模式。</p>
+<p>  - 注意：端口 0（RX）和 1（TX）为串口通讯专用引脚，默认用于与电脑交互，若需外接其他器件需谨慎，尽量避免占用串口端口。</p>
+<ol start="3">
+<li><strong>模拟输入端口</strong>：专门用于读取模拟信号（如电位器、传感器输出），通常标注为 A0~A5（不同版型数量可能不同）。</li>
+<li><strong>电源端口</strong>：用于给 Arduino 板供电或对外接器件供电（常见 5V、3.3V 输出）。</li>
+</ol>
+<h3 id="（二）常用硬件与电路规则"><a href="#（二）常用硬件与电路规则" class="headerlink" title="（二）常用硬件与电路规则"></a>（二）常用硬件与电路规则</h3><ol>
+<li><strong>面包板</strong>：</li>
+</ol>
+<p>  - 横排：电源总线，用于统一供电（建议分别接入 5V 和 GND，避免混接）。</p>
+<p>  - 竖排：器件连接区，每一列的 5 个插孔相互导通，用于搭建临时电路。</p>
+<ol start="2">
+<li><strong>LED 电路</strong>：</li>
+</ol>
+<p>  - 必须串联限流电阻，防止 LED 过流烧毁。</p>
+<p>  - 关键参数：LED 典型工作电流 20mA，正向电压降约 2V（不同颜色略有差异）。</p>
+<p>  - 电阻选型：根据供电电压计算（如 5V 供电时，限流电阻 = (5V - 2V)/0.02A = 150Ω，实际可选用 150Ω~220Ω 范围，略大更安全）。</p>
+<ol start="3">
+<li><strong>电位器（滑动变阻器）</strong>：</li>
+</ol>
+<p>  - 三引脚结构：1 脚接 GND，3 脚接 5V，2 脚（中间引脚）作为信号输出端，接入模拟输入端口。</p>
+<p>  - 作用：通过滑动改变中间引脚的分压，输出 0~5V 连续变化的模拟电压。</p>
+<h2 id="二、编程基础"><a href="#二、编程基础" class="headerlink" title="二、编程基础"></a>二、编程基础</h2><h3 id="（一）语言与变量"><a href="#（一）语言与变量" class="headerlink" title="（一）语言与变量"></a>（一）语言与变量</h3><ol>
+<li><strong>编程语言</strong>：基于 C++ 开发，语法兼容 C++ 核心特性</li>
+<li><strong>变量作用域</strong>：</li>
+</ol>
+<p>  - 局部变量：定义在函数内部，仅在该函数内有效，函数执行结束后释放内存。</p>
+<p>  - 全局变量：定义在所有函数外部（通常在代码开头），整个程序中所有函数均可访问。</p>
+<p>  - 注意：避免使用同名的局部变量和全局变量，会导致变量遮蔽，引发逻辑错误。</p>
+<h3 id="（二）核心程序结构"><a href="#（二）核心程序结构" class="headerlink" title="（二）核心程序结构"></a>（二）核心程序结构</h3><ol>
+<li><strong>void setup() 函数</strong>：</li>
+</ol>
+<p>  - 作用：程序初始化，仅在 Arduino 上电或复位后执行一次。</p>
+<p>  - 常用场景：设置引脚模式（pinMode）、初始化串口（Serial.begin）、配置传感器等。</p>
+<ol start="2">
+<li><strong>void loop() 函数</strong>：</li>
+</ol>
+<p>  - 作用：主循环函数，setup() 执行完毕后，会无限循环执行 loop() 内的代码。</p>
+<p>  - 常用场景：数据读取（digitalRead/analogRead）、逻辑判断、输出控制（digitalWrite/analogWrite）等核心功能。</p>
+<h2 id="三、核心函数分类（按功能模块）"><a href="#三、核心函数分类（按功能模块）" class="headerlink" title="三、核心函数分类（按功能模块）"></a>三、核心函数分类（按功能模块）</h2><h3 id="（一）引脚模式与-I-O-控制函数"><a href="#（一）引脚模式与-I-O-控制函数" class="headerlink" title="（一）引脚模式与 I/O 控制函数"></a>（一）引脚模式与 I/O 控制函数</h3><ol>
+<li><h4 id="pinMode-引脚编号-模式"><a href="#pinMode-引脚编号-模式" class="headerlink" title="pinMode(引脚编号, 模式)"></a>pinMode(引脚编号, 模式)</h4></li>
+</ol>
+<p>- 功能：配置指定引脚的工作模式。</p>
+<p>- 参数说明：</p>
+<p> - 引脚编号：数字引脚（0<del>13 等）或模拟引脚（A0</del>A5 等，作为数字引脚使用时可直接写编号）。</p>
+<p> - 模式：INPUT（输入模式，高阻抗约 100MΩ，用于检测外部高/低电位）</p>
+<p>​               OUTPUT（输出模式，用于驱动 LED、电机等器件）</p>
+<p>​               INPUT_PULLUP（内置上拉输入模式，无需外接上拉电阻，默认检测高电位，外部触发时拉低）。</p>
+<p>- 应用场景：按钮开关连接（INPUT 模式需搭配外接上拉/下拉电阻，INPUT_PULLUP 模式可简化电路）。</p>
+<ol start="2">
+<li><h4 id="digitalWrite-引脚编号-电平"><a href="#digitalWrite-引脚编号-电平" class="headerlink" title="digitalWrite(引脚编号, 电平)"></a>digitalWrite(引脚编号, 电平)</h4></li>
+</ol>
+<p>- 功能：向数字引脚输出高/低电平。</p>
+<p>- 参数说明：</p>
+<p> - 引脚编号：需先通过 pinMode 配置为 OUTPUT 模式。</p>
+<p> - 电平：HIGH（输出高电平，约 5V）、LOW（输出低电平，约 0V）。</p>
+<p>- 应用场景：控制 LED 亮灭、继电器开关、直流电机启停等。</p>
+<ol start="3">
+<li><h4 id="digitalRead-引脚编号"><a href="#digitalRead-引脚编号" class="headerlink" title="digitalRead(引脚编号)"></a>digitalRead(引脚编号)</h4></li>
+</ol>
+<p>- 功能：读取数字引脚的当前电平状态。</p>
+<p>- 参数说明：引脚编号需先通过 pinMode 配置为 INPUT 或 INPUT_PULLUP 模式。</p>
+<p>- 返回值：HIGH（高电位）或 LOW（低电位）。</p>
+<p>- 应用场景：检测按钮是否按下、传感器数字信号输出等（可将返回值赋值给变量，供后续逻辑判断或 digitalWrite 调用）。</p>
+<h3 id="（二）模拟信号处理函数"><a href="#（二）模拟信号处理函数" class="headerlink" title="（二）模拟信号处理函数"></a>（二）模拟信号处理函数</h3><h4 id="analogRead-模拟引脚编号"><a href="#analogRead-模拟引脚编号" class="headerlink" title="analogRead(模拟引脚编号)"></a>analogRead(模拟引脚编号)</h4><p>- 功能：读取模拟引脚的模拟电压信号，并转换为数字值。</p>
+<p>- 核心特性：</p>
+<p> - 采样精度：10 位（2^10），返回值范围 0<del>1023（对应输入电压 0</del>5V，即 1 个数字值 ≈ 4.88mV）。</p>
+<p> - 采样速率：约每秒 10000 次（10kHz），无需手动配置速率。</p>
+<p>- 应用场景：读取电位器位置、温度传感器（如 LM35）的模拟输出、光线传感器亮度信号等。</p>
+<h4 id="analogWrite-引脚编号-占空比"><a href="#analogWrite-引脚编号-占空比" class="headerlink" title="analogWrite(引脚编号, 占空比)"></a>analogWrite(引脚编号, 占空比)</h4><p>- 功能：通过 PWM（脉冲宽度调制）方式输出模拟效果（非真正模拟电压，而是通过占空比控制平均电压）。</p>
+<p>- 核心限制：仅支持特定数字引脚（通常标注 ~ 符号，如 3、5、6、9、10、11 等，不同版型略有差异）。</p>
+<p>- 参数说明：</p>
+<p> - 引脚编号：无需手动配置为 PWM 模式，直接调用即可（底层自动适配）。</p>
+<p> - 占空比：范围 0~255（0 对应完全关闭，255 对应完全开启）。</p>
+<p>- 应用场景：调节 LED 亮度、控制直流电机转速、调节舵机角度（部分舵机支持）等。</p>
+<h4 id="map-原值-原最小值-原最大值-目标最小值-目标最大值"><a href="#map-原值-原最小值-原最大值-目标最小值-目标最大值" class="headerlink" title="map(原值, 原最小值, 原最大值, 目标最小值, 目标最大值)"></a>map(原值, 原最小值, 原最大值, 目标最小值, 目标最大值)</h4><p>- 功能：将一个数值从原范围等比映射到目标范围（线性转换），常用于电压/数字值、不同量程的信号转换。</p>
+<p>- 参数说明：</p>
+<p> - 原值：需要转换的原始数据（如 analogRead 的返回值 0~1023）。</p>
+<p> - 原最小值/原最大值：原始数据的取值范围。</p>
+<p> - 目标最小值/目标最大值：转换后数据的取值范围。</p>
+<p>- 示例：map(analogRead(A0), 0, 1023, 0, 255) → 将模拟读取的 0<del>1023 转换为 PWM 所需的 0</del>255。</p>
+<p>- 注意：映射结果为整数，若需高精度浮点数转换，需手动通过公式计算。</p>
+<h3 id="（三）串口通讯函数"><a href="#（三）串口通讯函数" class="headerlink" title="（三）串口通讯函数"></a>（三）串口通讯函数</h3><h4 id="Serial-begin-波特率"><a href="#Serial-begin-波特率" class="headerlink" title="Serial.begin(波特率)"></a>Serial.begin(波特率)</h4><p>- 功能：初始化串口通讯，建立 Arduino 与电脑（或其他串口设备）的数据传输通道。</p>
+<p>- 参数说明：波特率（每秒传输的比特数），需与串口监视器（或外接设备）的波特率一致，常用值 9600（默认推荐）、19200、38400、115200 等。</p>
+<p>- 应用场景：在 setup() 中初始化，后续通过 Serial 系列函数发送/接收数据。</p>
+<h4 id="Serial-println-数据-字符串"><a href="#Serial-println-数据-字符串" class="headerlink" title="Serial.println(数据/字符串)"></a>Serial.println(数据/字符串)</h4><p>- 功能：向串口发送数据（字符串、数字、变量等），并自动在末尾添加换行符（\n）。</p>
+<p>- 补充函数：</p>
+<p> - Serial.print()：与 println 功能一致，但不添加换行符。</p>
+<p> - Serial.read()：读取串口接收到的数据。</p>
+<p>- 应用场景：调试程序（输出变量值、程序运行状态）、与电脑或其他串口设备交互数据。</p>
+<h3 id="（四）时间控制函数"><a href="#（四）时间控制函数" class="headerlink" title="（四）时间控制函数"></a>（四）时间控制函数</h3><h4 id="delay-毫秒数"><a href="#delay-毫秒数" class="headerlink" title="delay(毫秒数)"></a>delay(毫秒数)</h4><p>- 功能：暂停程序执行指定的毫秒数（1 秒 = 1000 毫秒）。</p>
+<p>- 参数说明：毫秒数（可直接写数值，如 500；或赋值给变量，如 delay(time_val)）。</p>
+<p>- 注意：delay 期间，程序会阻塞，无法执行其他操作（如需非阻塞延时，需使用 millis() 函数实现）。</p>
+<p>- 应用场景：控制 LED 闪烁间隔、电机运行时长、传感器采样间隔等。</p>
+<h2 id="四、逻辑运算与控制技巧"><a href="#四、逻辑运算与控制技巧" class="headerlink" title="四、逻辑运算与控制技巧"></a>四、逻辑运算与控制技巧</h2><h3 id="（一）核心逻辑运算符"><a href="#（一）核心逻辑运算符" class="headerlink" title="（一）核心逻辑运算符"></a>（一）核心逻辑运算符</h3><ol>
+<li><strong>!（非运算符）</strong>：反转逻辑状态（如 !HIGH = LOW，!digitalRead(2) 表示读取引脚 2 的反状态），常用于反向控制（如按钮按下时关闭 LED，松开时点亮）。</li>
+<li><strong>&amp;&amp;（与运算符）</strong>：多个条件同时满足时，逻辑才成立（如 button1 == HIGH &amp;&amp; button2 == HIGH → 两个按钮都按下时执行操作），适用于多控场景。</li>
+<li><strong>||（或运算符）</strong>：任意一个条件满足时，逻辑即成立（如 button1 == HIGH || button2 == HIGH → 任意一个按钮按下时执行操作），适用于多触发源场景。</li>
+</ol>
+<h3 id="（二）实用控制技巧"><a href="#（二）实用控制技巧" class="headerlink" title="（二）实用控制技巧"></a>（二）实用控制技巧</h3><ol>
+<li><p><strong>按钮控制电机/LED 反向逻辑</strong>：通过 ! 运算符或修改 digitalWrite 的 HIGH/LOW 电平，实现按钮按下与设备状态的反向关联 buttonState = digitalRead(buttonPin); </p>
+<p>digitalWrite(motorPin, !buttonState)）。</p>
+</li>
+<li><p><strong>PWM 原理补充</strong>：脉冲宽度调制（PWM）是通过快速切换引脚的通断状态，改变一个周期内“导通时间”与“总周期时间”的比例（占空比），利用人眼或电机的惯性产生“模拟效果”（如占空比 50% 时，LED 亮度为半亮，电机转速为半速）。</p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://Cnkrru.github.io">Cnkrru</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://cnkrru.github.io/2025/12/02/arduino1/">https://cnkrru.github.io/2025/12/02/arduino1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/arduino/">arduino</a></div><div class="post-share"><div class="social-share" data-image="/img/tou.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/12/01/%E8%AE%B0%E5%BD%95%E6%97%A5%E5%B8%B83/" title="记录日常3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">记录日常3</div></div><div class="info-2"><div class="info-item-1">今晚也没回寝室，在教学楼的“教师休息咨询室”过夜  写了一些arduino功能模板，不得不说，真有意思，一通百通，GitHub的ai还能帮我检查  这些代码都上传到GitHub的仓库里了，希望以后可以帮助学习arduino的人吧  并没有很累，很有精神，这些知识真的很有意思！计算机简直是“异世界”！ </div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Arduino1-%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">Arduino1 核心知识整理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.</span> <span class="toc-text">一、硬件基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E6%A0%B8%E5%BF%83%E6%8E%A5%E5%8F%A3%E4%B8%8E%E5%BC%95%E8%84%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">（一）核心接口与引脚</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E5%B8%B8%E7%94%A8%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%94%B5%E8%B7%AF%E8%A7%84%E5%88%99"><span class="toc-number">1.1.2.</span> <span class="toc-text">（二）常用硬件与电路规则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80"><span class="toc-number">1.2.</span> <span class="toc-text">二、编程基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E8%AF%AD%E8%A8%80%E4%B8%8E%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">（一）语言与变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E6%A0%B8%E5%BF%83%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.2.</span> <span class="toc-text">（二）核心程序结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%A0%B8%E5%BF%83%E5%87%BD%E6%95%B0%E5%88%86%E7%B1%BB%EF%BC%88%E6%8C%89%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">三、核心函数分类（按功能模块）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E5%BC%95%E8%84%9A%E6%A8%A1%E5%BC%8F%E4%B8%8E-I-O-%E6%8E%A7%E5%88%B6%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.1.</span> <span class="toc-text">（一）引脚模式与 I&#x2F;O 控制函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pinMode-%E5%BC%95%E8%84%9A%E7%BC%96%E5%8F%B7-%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">pinMode(引脚编号, 模式)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#digitalWrite-%E5%BC%95%E8%84%9A%E7%BC%96%E5%8F%B7-%E7%94%B5%E5%B9%B3"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">digitalWrite(引脚编号, 电平)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#digitalRead-%E5%BC%95%E8%84%9A%E7%BC%96%E5%8F%B7"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">digitalRead(引脚编号)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.2.</span> <span class="toc-text">（二）模拟信号处理函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#analogRead-%E6%A8%A1%E6%8B%9F%E5%BC%95%E8%84%9A%E7%BC%96%E5%8F%B7"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">analogRead(模拟引脚编号)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#analogWrite-%E5%BC%95%E8%84%9A%E7%BC%96%E5%8F%B7-%E5%8D%A0%E7%A9%BA%E6%AF%94"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">analogWrite(引脚编号, 占空比)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#map-%E5%8E%9F%E5%80%BC-%E5%8E%9F%E6%9C%80%E5%B0%8F%E5%80%BC-%E5%8E%9F%E6%9C%80%E5%A4%A7%E5%80%BC-%E7%9B%AE%E6%A0%87%E6%9C%80%E5%B0%8F%E5%80%BC-%E7%9B%AE%E6%A0%87%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">map(原值, 原最小值, 原最大值, 目标最小值, 目标最大值)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.3.</span> <span class="toc-text">（三）串口通讯函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Serial-begin-%E6%B3%A2%E7%89%B9%E7%8E%87"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">Serial.begin(波特率)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Serial-println-%E6%95%B0%E6%8D%AE-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">Serial.println(数据&#x2F;字符串)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89%E6%97%B6%E9%97%B4%E6%8E%A7%E5%88%B6%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.4.</span> <span class="toc-text">（四）时间控制函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#delay-%E6%AF%AB%E7%A7%92%E6%95%B0"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">delay(毫秒数)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E4%B8%8E%E6%8E%A7%E5%88%B6%E6%8A%80%E5%B7%A7"><span class="toc-number">1.4.</span> <span class="toc-text">四、逻辑运算与控制技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E6%A0%B8%E5%BF%83%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.4.1.</span> <span class="toc-text">（一）核心逻辑运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%9E%E7%94%A8%E6%8E%A7%E5%88%B6%E6%8A%80%E5%B7%A7"><span class="toc-number">1.4.2.</span> <span class="toc-text">（二）实用控制技巧</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url(/img/al.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By Cnkrru</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.2</a></span></div><div class="footer_custom_text">share everything that interesting , happy everyday</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.2"></script><script src="/js/main.js?v=5.5.2"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.4/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const abcjsInit = () => {
+    const abcjsFn = () => {
+      setTimeout(() => {
+        const sheets = document.querySelectorAll(".abc-music-sheet")
+        for (let i = 0; i < sheets.length; i++) {
+          const ele = sheets[i]
+          if (ele.children.length > 0) continue
+
+          // Parse parameters from data-params attribute
+          let params = {}
+          const dp = ele.getAttribute("data-params")
+          if (dp) {
+            try {
+              params = JSON.parse(dp)
+            } catch (e) {
+              console.error("Failed to parse data-params:", e)
+            }
+          }
+
+          // Merge parsed parameters with the responsive option
+          // Ensures params content appears before responsive
+          const options = { ...params, responsive: "resize" }
+
+          // Render the music score using ABCJS.renderAbc
+          ABCJS.renderAbc(ele, ele.innerHTML, options)
+        }
+      }, 100)
+    }
+
+    if (typeof ABCJS === "object") {
+      abcjsFn()
+    } else {
+      btf.getScript("https://cdn.jsdelivr.net/npm/abcjs@6.5.2/dist/abcjs-basic-min.min.js").then(abcjsFn)
+    }
+  }
+
+  if (window.pjax) {
+    abcjsInit()
+  } else {
+    window.addEventListener("load", abcjsInit)
+  }
+
+  btf.addGlobalFn("encrypt", abcjsInit, "abcjs")
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'Wpr96JwLR7HAOV0lhSnqVQrE-gzGzoHsz',
+      appKey: 'pPzvb4Ja9Y5STFRoTXM9LGxR',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine@1.5.3/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      false
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script>(() => {
+  const option = null
+  const config = {"site_uv":false,"site_pv":false,"page_pv":false,"token":null}
+
+  const runTrack = () => {
+    if (typeof umami !== 'undefined' && typeof umami.track === 'function') {
+      umami.track(props => ({ ...props, url: window.location.pathname, title: GLOBAL_CONFIG_SITE.title }))
+    } else {
+      console.warn('Umami Analytics: umami.track is not available')
+    }
+  }
+
+  const loadUmamiJS = () => {
+    btf.getScript('https://cloud.umami.is/script.js', {
+      'data-website-id': '',
+      'data-auto-track': 'false',
+      ...option
+    }).then(() => {
+      runTrack()
+    }).catch(error => {
+      console.error('Umami Analytics: Error loading script', error)
+    })
+  }
+
+  const getData = async (isPost) => {
+    try {
+      const now = Date.now()
+      const keyUrl = isPost ? `&url=${window.location.pathname}` : ''
+      const headerList = { 'Accept': 'application/json' }
+
+      if (false) {
+        headerList['Authorization'] = `Bearer ${config.token}`
+      } else {
+        headerList['x-umami-api-key'] = config.token
+      }
+
+      const res = await fetch(`https://api.umami.is/v1/websites//stats?startAt=0000000000&endAt=${now}${keyUrl}`, {
+        method: "GET",
+        headers: headerList
+      })
+
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`)
+      }
+
+      return await res.json()
+    } catch (error) {
+      console.error('Umami Analytics: Failed to fetch data', error)
+      throw error
+    }
+  }
+
+  const insertData = async () => {
+    try {
+      if (GLOBAL_CONFIG_SITE.pageType === 'post' && config.page_pv) {
+        const pagePV = document.getElementById('umamiPV')
+        if (pagePV) {
+          const data = await getData(true)
+          if (data && data.pageviews && typeof data.pageviews.value !== 'undefined') {
+            pagePV.textContent = data.pageviews.value
+          } else {
+            console.warn('Umami Analytics: Invalid page view data received')
+          }
+        }
+      }
+
+      if (config.site_uv || config.site_pv) {
+        const data = await getData(false)
+
+        if (config.site_uv) {
+          const siteUV = document.getElementById('umami-site-uv')
+          if (siteUV && data && data.visitors && typeof data.visitors.value !== 'undefined') {
+            siteUV.textContent = data.visitors.value
+          } else if (siteUV) {
+            console.warn('Umami Analytics: Invalid site UV data received')
+          }
+        }
+
+        if (config.site_pv) {
+          const sitePV = document.getElementById('umami-site-pv')
+          if (sitePV && data && data.pageviews && typeof data.pageviews.value !== 'undefined') {
+            sitePV.textContent = data.pageviews.value
+          } else if (sitePV) {
+            console.warn('Umami Analytics: Invalid site PV data received')
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Umami Analytics: Failed to insert data', error)
+    }
+  }
+
+  btf.addGlobalFn('pjaxComplete', runTrack, 'umami_analytics_run_track')
+  btf.addGlobalFn('pjaxComplete', insertData, 'umami_analytics_insert')
+
+
+  loadUmamiJS()
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', insertData)
+  } else {
+    setTimeout(insertData, 100)
+  }
+})()</script><script async data-pjax src="/"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search for Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.2"></script></div></div><!-- hexo injector body_end start -->
+    <script src="/js/gallery.js" async></script>
+<!-- hexo injector body_end end --></body></html>
