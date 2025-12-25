@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://cnkrru.github.io/2025/12/25/%E7%94%B5%E8%84%911/</loc>
+    
+    <lastmod>2025-12-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://cnkrru.github.io/2025/12/07/%E8%AE%B0%E5%BD%95%E6%97%A5%E5%B8%B85/</loc>
     
     <lastmod>2025-12-07</lastmod>
@@ -94,22 +103,29 @@
 
   <url>
     <loc>https://cnkrru.github.io/</loc>
-    <lastmod>2025-12-07</lastmod>
+    <lastmod>2025-12-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://cnkrru.github.io/tags/arduino/</loc>
-    <lastmod>2025-12-07</lastmod>
+    <loc>https://cnkrru.github.io/tags/%E8%AE%B0%E5%BD%95%E7%94%9F%E6%B4%BB/</loc>
+    <lastmod>2025-12-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://cnkrru.github.io/tags/%E8%AE%B0%E5%BD%95%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2025-12-07</lastmod>
+    <loc>https://cnkrru.github.io/tags/arduino/</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://cnkrru.github.io/tags/%E7%94%B5%E8%84%91/</loc>
+    <lastmod>2025-12-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

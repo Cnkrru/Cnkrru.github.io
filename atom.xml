@@ -6,7 +6,7 @@
   <link href="https://cnkrru.github.io/atom.xml" rel="self"/>
   
   <link href="https://cnkrru.github.io/"/>
-  <updated>2025-12-07T14:53:29.639Z</updated>
+  <updated>2025-12-25T13:39:50.349Z</updated>
   <id>https://cnkrru.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>电脑1</title>
+    <link href="https://cnkrru.github.io/2025/12/25/%E7%94%B5%E8%84%911/"/>
+    <id>https://cnkrru.github.io/2025/12/25/%E7%94%B5%E8%84%911/</id>
+    <published>2025-12-25T13:33:04.000Z</published>
+    <updated>2025-12-25T13:39:50.349Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>//***************************************************************************************//</p><p>电脑工具</p><ol><li>Everything</li></ol><p>l 文件搜索工具（替代Windows资源管理器自带的）</p><p>l Windows自带的搜索很慢</p><ol start="2"><li>Geek</li></ol><p>l 删除软件的工具，Windows自己的控制面板和设置里也可以删除软件，这个适合电脑玩的不太多的人使用</p><p>l 最好用工具/电脑自带删除功能删除软件</p><p>自己直接删除文件夹，会导致C盘有缓存残余/注册表之类的没清理</p><ol start="3"><li>7-zip</li></ol><p>l 压缩/加压缩软件</p><p>l 也可以使用bandzip，不过两个都使用过后推荐7zip</p><ol start="4"><li>Fileconverter</li></ol><p>l 文件转换工具</p><p>l 可以将文件转换为多种形式，很全面</p><ol start="5"><li>IDM</li></ol><p>l 下载工具（如果发现浏览器下载慢，可以试试，但是外网的下载该慢还是慢，除非使用加速器）</p><ol start="6"><li>WiseDiskCleaner</li></ol><p>l 清理磁盘的，挺不错</p><ol start="7"><li>Contextmenumanager</li></ol><p>l 右键管理工具</p><p>l 可以选择开启/关闭一些软件嵌入的右键便捷效果（大部分情况好用）</p><ol start="8"><li>DirectX Repair</li></ol><p>l 修复dll以及检测C++依赖库</p><ol start="9"><li>图吧工具箱</li></ol><p>l 大部分功能大概用不上</p><p>l 内含everything和geek以及DircetX repair</p><p>//***************************************************************************************//</p><p>影音</p><ol start="10"><li>Lx音乐</li></ol><p>l GitHub上的开源音乐播放器</p><p>l 需要自己导入音源</p><ol start="11"><li>Kazumi</li></ol><p>l GitHub上的开源动漫软件</p><ol start="12"><li>Audiovisual</li></ol><p>l GitHub上的影视软件，有多种解析接口（相当于绕过vip，直接观看视频）</p><ol start="13"><li>Simple live</li></ol><p>l GitHub上的看直播工具，简洁美观，整合了四个直播平台</p><ol start="14"><li>笔趣阁</li></ol><p>l 看小说的</p><p>l 看小说还有一种方式，需要sonoval与readest搭配使用，比笔趣阁好的在于无限制，应该是什么小说都能下载，但使用麻烦</p><p>//***************************************************************************************//</p><p>办公</p><ol start="15"><li>Office tool plus</li></ol><p>l 安装并激活各种Windows办公软件的（比如激活visio）</p><p>l 具体使用可以搜索网络教程，需要kms主机编号</p><p>KMS主机编号：kms.03k.org</p><ol start="16"><li>Notion</li></ol><p>l 福昕pdf上位替代，看教材，当草纸，记笔记都很好 </p><ol start="17"><li>Mathtype</li></ol><p>l GitHub上有7.8版本的破解替换程序</p><ol start="18"><li>插件：</li></ol><p>l 办公精灵（word精灵，excel精灵，ppt精灵）</p><p>l 不坑盒子</p><p>//是否安装插件看喜好，插件多，加载就慢！</p><p>//***************************************************************************************//</p><p>其他</p><ol start="19"><li>Openspeedy</li></ol><p>l GitHub上的进程加速工具，可以加速网盘达到一个能用的速度（5-7mb/s）</p><ol start="20"><li>WinUIget</li></ol><p>l 软件更新工具，可以自动检测软件更新，并帮你下载</p><ol start="21"><li>Snipaste</li></ol><p>l 截屏软件，便捷好用</p><p>l 有替代（shareX，只用了两天，功能更强大，未必比snipaste好用）</p><ol start="22"><li>OBS</li></ol><p>l 录屏软件（暂时没用过，以前用的是EV）</p><p>l OBS与EV类似shareX与snipaste，前者都更强大，后者都更方便</p><p>//***************************************************************************************//</p><p>编程（很推荐学）</p><ol start="23"><li>VScode</li></ol><p>拓展性最好的写代码的工具，插件无数</p><ol start="24"><li>其他</li></ol><p>其他很多都有一一对应好用的IDE，比如</p><p>Ø C++，Visual Studio</p><p>Ø Python，pycharm</p><p>Ø 还有很多，对应不同需要，不同领域</p><p>Ø 比如arduino IDE，openmv IDE，STMcubeIDE，keil，有各种各样的IDE，对应不同的开发</p><p>//均是免费的，企业版需要付费</p><p>附录：</p><p>² 科学上网步骤</p><p>l 第一步，steam++加速GitHub</p><p>l 第二步，在GitHub中下载clash</p><p>l 第三步，在GitHub中找到clash节点订阅项目，买节点（和vpn相比便宜）</p><p>l 第四步，在clash中导入节点</p><p>l GitHub上的V2rayN也可以，但是clash更好用</p><p>Ø Steam++：浏览器搜索有官网</p><p>Ø Clash  ：手机下载apk，电脑下载clash for Windows</p><p>Ø 节点  ： 我用的是冲上云霄网站提供的，价格合适</p><p>//*************************************************************************************//</p><p>一些找东西的途径与方法</p><p>l 官网：优先官网，不想花钱再找破解版，支持正版很好，开发者也要吃饭</p><p>l 网盘：小云搜索（网站，搜索网盘资源）</p><p>l Q群：“找群”中搜索关键字，然后直接申请进入人数多的群，看群文件</p><p>l 微信：一些公众号，比如：都都软件</p><p>l B站：b站搜出来，一般指向公众号/网盘</p><p>l 电报：telegram，需要科学上网后在youtube学一下如何使用电报，才能使用</p><p>l 贴吧：进对应吧里找</p><p>//*************************************************************************************//</p><p>一些简单的电脑常识</p><p>l Ctrl+C/V/X：复制/粘贴/剪切  //写代码时很好用</p><p>l ESC+Shift+Ctrl：打开进程管理器，可以关闭卡住的进程，比如桌面图标无法交互，用进程管理器重启资源管理器（应急）</p><p>l 删除软件几种方法：</p><p>Ø 第三方软件：geek</p><p>Ø 电脑自动程序：</p><p>控制面板→程序下面的小字“卸载程序”</p><p>设置→应用→安装的应用</p><p>Ø 右键桌面快捷方式，选择“打开文件所在位置”</p><p>一般程序文件夹里都用一个“uninstall.exe”，这就是删除程序</p><p>对应的update程序会自动检测软件版本，并拉取更新请求</p><p>Ø 直接删除文件夹（非常不推荐！！！）</p><p>残留的C盘对应生成的文件无法处理，注册表未清理</p><p>l 几种文件类型</p><p>Ø Apk：安卓安装包</p><p>Ø Msi：Windows安装包</p><p>Ø Dmg：ios安装包</p><p>Ø 还有很多类型，但因为文件类型后缀可以自定义，所以见一个认识一个就好</p><p>//电脑常识还有很多，全说完要很多字，而且看一遍也记不住，只提常用的，最</p><p>//快学到这些电脑常识的方法就是玩电脑（不只是玩游戏）</p><p>//*************************************************************************************//</p><p>注释：</p><p>l Everything，geek，7z，WDC，office tool plus，snipaste（shareX），obs（ev），vscode都是可以直接搜到的</p><p>l 部分软件压缩成7z格式的压缩包存网盘</p><p>有的是手机软件安装包，apk后缀的就是</p><p>Ø openspeedy存蓝奏云</p><p><a href="https://cnkrru.lanzouu.com/iKhHY3ehu0te">https://cnkrru.lanzouu.com/iKhHY3ehu0te</a><br> 密码:3qne</p><p>Ø 其他的软件存在quark网盘</p><p>链接：<a href="https://pan.quark.cn/s/b25f11956a47">https://pan.quark.cn/s/b25f11956a47</a></p><p>提取码：kYX8</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    
+    <category term="电脑" scheme="https://cnkrru.github.io/tags/%E7%94%B5%E8%84%91/"/>
+    
+  </entry>
   
   <entry>
     <title>记录日常5</title>
